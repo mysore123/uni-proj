@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+<!--title/name of uni-->
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="post?.title"
+        required
+        minlength="3"
+        placeholder="University Name"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please university name field.</mat-error>
+    </mat-form-field>
+
+<!--Content/city-->
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="1"
+        name="content"
+        [ngModel]="post?.content"
+        required
+        placeholder="City"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please the city field.</mat-error>
+    </mat-form-field>
+
+<!--Ownership-->
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="ownership"
+        [ngModel]="post?.ownership"
+        required
+        minlength="3"
+        placeholder="Ownership type (Private/Central)"
+        #ownership="ngModel">
+      <mat-error *ngIf="ownership.invalid">Please enter ownership</mat-error>
+    </mat-form-field>
+
+
+<!--Faculty-->
+<mat-form-field>
+  <input
+    matInput
+    type="string"
+    name="faculty"
+    [ngModel]="post?.faculty"
+    required
+    minlength="3"
+    placeholder="No. of faculty members"
+    #faculty="ngModel">
+  <mat-error *ngIf="faculty.invalid">Please enter faculty field</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+  <input
+    matInput
+    type="string"
+    name="establish"
+    [ngModel]="post?.establish"
+    required
+    minlength="3"
+    placeholder="Year of establishment"
+    #establish="ngModel">
+  <mat-error *ngIf="establish.invalid">Please enter above field</mat-error>
+</mat-form-field>
+
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save Record</button>
+  </form>
+</mat-card>
